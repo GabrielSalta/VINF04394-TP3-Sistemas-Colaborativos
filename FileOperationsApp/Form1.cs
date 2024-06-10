@@ -51,7 +51,7 @@ namespace FileOperationsApp
                 // Escribir el contenido por defecto en el archivo con la fecha y hora de creación
                 string content = $"Este es el contenido inicial del archivo. Creado el {DateTime.Now}\n";
                 File.WriteAllText(filePath, content);
-                MessageBox.Show("Texto añadido al archivo.");
+                MessageBox.Show("Texto añadido al archivo."); // Mensaje de confirmación
                 ShowFileContent();
 
                 // Ejecutar comandos Git
@@ -74,7 +74,7 @@ namespace FileOperationsApp
                 {
                     string content = $"Eliminado el {DateTime.Now}";
                     File.WriteAllText(filePath, content);
-                    MessageBox.Show("Contenido del archivo eliminado.");
+                    MessageBox.Show("Contenido del archivo eliminado."); // Mensaje de confirmación
                     ShowFileContent(); // Asegurarse de actualizar la pantalla
 
                     // Ejecutar comandos Git
@@ -100,7 +100,7 @@ namespace FileOperationsApp
                 // Guardar el contenido del cuadro de texto en el archivo con la fecha y hora de modificación
                 string content = $"{txtContent.Text}\nModificado el {DateTime.Now}";
                 File.WriteAllText(filePath, content);
-                MessageBox.Show("Archivo guardado.");
+                MessageBox.Show("Archivo guardado."); // Mensaje de confirmación
                 ShowFileContent();
 
                 // Ejecutar comandos Git
@@ -130,11 +130,6 @@ namespace FileOperationsApp
         private void Form1_Load(object sender, EventArgs e)
         {
             ShowFileContent();
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
