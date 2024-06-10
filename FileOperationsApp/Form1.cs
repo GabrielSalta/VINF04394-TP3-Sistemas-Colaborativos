@@ -46,7 +46,8 @@ namespace FileOperationsApp
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            File.AppendAllText(filePath, "Este es el contenido inicial del archivo.\n");
+            // Eliminar el contenido antiguo y agregar texto por defecto
+            File.WriteAllText(filePath, "Este es el contenido inicial del archivo.\n");
             MessageBox.Show("Texto añadido al archivo.");
             ShowFileContent();
 
@@ -65,6 +66,7 @@ namespace FileOperationsApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            // Eliminar todo el contenido del archivo
             if (File.Exists(filePath))
             {
                 File.WriteAllText(filePath, string.Empty);
@@ -91,6 +93,7 @@ namespace FileOperationsApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            // Guardar el contenido del cuadro de texto en el archivo
             File.WriteAllText(filePath, txtContent.Text);
             MessageBox.Show("Archivo guardado.");
             ShowFileContent();
@@ -110,6 +113,7 @@ namespace FileOperationsApp
 
         private void ShowFileContent()
         {
+            // Mostrar el contenido del archivo en el cuadro de texto
             if (File.Exists(filePath))
             {
                 txtContent.Text = File.ReadAllText(filePath);
