@@ -48,14 +48,14 @@ namespace FileOperationsApp
         {
             try
             {
-                // Eliminar el contenido antiguo y agregar texto por defecto con una marca de tiempo
-                File.WriteAllText(filePath, $"Este es el contenido inicial del archivo. {DateTime.Now}\n");
+                // Escribir el contenido por defecto en el archivo
+                File.WriteAllText(filePath, "Este es el contenido inicial del archivo.\n");
                 MessageBox.Show("Texto añadido al archivo.");
                 ShowFileContent();
 
                 // Ejecutar comandos Git
                 ExecuteGitCommand("add ."); // Agregar todos los archivos modificados y no rastreados
-                ExecuteGitCommand("commit -m \"Añadir texto a archivo.txt desde la aplicación\"");
+                ExecuteGitCommand("commit -m \"Añadir texto por defecto a archivo.txt desde la aplicación\"");
                 ExecuteGitCommand("push origin main");
             }
             catch (Exception ex)
