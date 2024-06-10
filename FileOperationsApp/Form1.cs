@@ -48,8 +48,8 @@ namespace FileOperationsApp
         {
             try
             {
-                // Eliminar el contenido antiguo y agregar texto por defecto
-                File.WriteAllText(filePath, "Este es el contenido inicial del archivo.\n");
+                // Eliminar el contenido antiguo y agregar texto por defecto con una marca de tiempo
+                File.WriteAllText(filePath, $"Este es el contenido inicial del archivo. {DateTime.Now}\n");
                 MessageBox.Show("Texto añadido al archivo.");
                 ShowFileContent();
 
