@@ -46,68 +46,68 @@ namespace FileOperationsApp
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            // Eliminar el contenido antiguo y agregar texto por defecto
-            File.WriteAllText(filePath, "Este es el contenido inicial del archivo.\n");
-            MessageBox.Show("Texto añadido al archivo.");
-            ShowFileContent();
-
-            // Ejecutar comandos Git
             try
             {
+                // Eliminar el contenido antiguo y agregar texto por defecto
+                File.WriteAllText(filePath, "Este es el contenido inicial del archivo.\n");
+                MessageBox.Show("Texto añadido al archivo.");
+                ShowFileContent();
+
+                // Ejecutar comandos Git
                 ExecuteGitCommand("add ."); // Agregar todos los archivos modificados y no rastreados
                 ExecuteGitCommand("commit -m \"Añadir texto a archivo.txt desde la aplicación\"");
                 ExecuteGitCommand("push origin main");
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Error: {ex.Message}");
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // Eliminar todo el contenido del archivo
-            if (File.Exists(filePath))
+            try
             {
-                File.WriteAllText(filePath, string.Empty);
-                MessageBox.Show("Contenido del archivo eliminado.");
-                ShowFileContent();
-
-                // Ejecutar comandos Git
-                try
+                // Eliminar todo el contenido del archivo
+                if (File.Exists(filePath))
                 {
+                    File.WriteAllText(filePath, string.Empty);
+                    MessageBox.Show("Contenido del archivo eliminado.");
+                    ShowFileContent();
+
+                    // Ejecutar comandos Git
                     ExecuteGitCommand("add ."); // Agregar todos los archivos modificados y no rastreados
                     ExecuteGitCommand("commit -m \"Eliminar contenido de archivo.txt desde la aplicación\"");
                     ExecuteGitCommand("push origin main");
                 }
-                catch (InvalidOperationException ex)
+                else
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("El archivo no existe.");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("El archivo no existe.");
+                MessageBox.Show($"Error: {ex.Message}");
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // Guardar el contenido del cuadro de texto en el archivo
-            File.WriteAllText(filePath, txtContent.Text);
-            MessageBox.Show("Archivo guardado.");
-            ShowFileContent();
-
-            // Ejecutar comandos Git
             try
             {
+                // Guardar el contenido del cuadro de texto en el archivo
+                File.WriteAllText(filePath, txtContent.Text);
+                MessageBox.Show("Archivo guardado.");
+                ShowFileContent();
+
+                // Ejecutar comandos Git
                 ExecuteGitCommand("add ."); // Agregar todos los archivos modificados y no rastreados
                 ExecuteGitCommand("commit -m \"Guardar cambios en archivo.txt desde la aplicación\"");
                 ExecuteGitCommand("push origin main");
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Error: {ex.Message}");
             }
         }
 
