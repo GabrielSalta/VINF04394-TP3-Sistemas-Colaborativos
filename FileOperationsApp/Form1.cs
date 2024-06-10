@@ -8,7 +8,6 @@ namespace FileOperationsApp
     public partial class Form1 : Form
     {
         private string filePath = "D:\\Universidad Siglo 21\\18 Seminario de actualización en sistemas colaborativos\\VINF04394-TP3-Sistemas-Colaborativos\\archivo.txt";
-        private int createCount = 0; // Contador para asegurarnos de que siempre hay un cambio
 
         public Form1()
         {
@@ -49,9 +48,9 @@ namespace FileOperationsApp
         {
             try
             {
-                // Incrementar el contador y escribir el contenido por defecto con un cambio único
-                createCount++;
-                File.WriteAllText(filePath, $"Este es el contenido inicial del archivo. (Versión {createCount})\n");
+                // Escribir el contenido por defecto en el archivo con la fecha y hora de creación
+                string content = $"Este es el contenido inicial del archivo. Creado el {DateTime.Now}\n";
+                File.WriteAllText(filePath, content);
                 MessageBox.Show("Texto añadido al archivo.");
                 ShowFileContent();
 
@@ -97,8 +96,9 @@ namespace FileOperationsApp
         {
             try
             {
-                // Guardar el contenido del cuadro de texto en el archivo
-                File.WriteAllText(filePath, txtContent.Text);
+                // Guardar el contenido del cuadro de texto en el archivo con la fecha y hora de modificación
+                string content = $"{txtContent.Text}\nModificado el {DateTime.Now}";
+                File.WriteAllText(filePath, content);
                 MessageBox.Show("Archivo guardado.");
                 ShowFileContent();
 
