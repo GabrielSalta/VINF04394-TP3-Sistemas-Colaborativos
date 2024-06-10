@@ -69,10 +69,11 @@ namespace FileOperationsApp
         {
             try
             {
-                // Eliminar todo el contenido del archivo
+                // Eliminar todo el contenido del archivo y agregar la fecha de eliminación
                 if (File.Exists(filePath))
                 {
-                    File.WriteAllText(filePath, string.Empty);
+                    string content = $"Eliminado el {DateTime.Now}";
+                    File.WriteAllText(filePath, content);
                     MessageBox.Show("Contenido del archivo eliminado.");
                     ShowFileContent(); // Asegurarse de actualizar la pantalla
 
