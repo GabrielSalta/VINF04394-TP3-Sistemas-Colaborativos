@@ -74,7 +74,7 @@ namespace FileOperationsApp
                 {
                     File.WriteAllText(filePath, string.Empty);
                     MessageBox.Show("Contenido del archivo eliminado.");
-                    ShowFileContent();
+                    ShowFileContent(); // Asegurarse de actualizar la pantalla
 
                     // Ejecutar comandos Git
                     ExecuteGitCommand("add ."); // Agregar todos los archivos modificados y no rastreados
